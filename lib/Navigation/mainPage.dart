@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quickservice/Components/drawer.dart';
 import 'package:quickservice/Navigation/browseService.dart';
 import 'package:quickservice/Navigation/homePage.dart';
+import 'package:quickservice/Navigation/inbox.dart';
 import 'package:quickservice/Navigation/settings.dart';
 import 'package:quickservice/loginOrsignup/loginPage.dart';
 import 'package:quickservice/loginOrsignup/signUp.dart';
@@ -15,7 +16,7 @@ class Mainpage extends StatefulWidget {
 }
 
 int _currentIndex = 0;
-final _pages = [Homepage(), BrowseCategoryPage(), Loginpage(), SettingsPage()];
+final _pages = [Homepage(), BrowseCategoryPage(), Inbox(), SettingsPage()];
 
 class _homeScreenState extends State<Mainpage> {
   dynamic _page = _pages[_currentIndex];

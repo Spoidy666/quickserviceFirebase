@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quickservice/Components/appBar.dart';
+import 'package:quickservice/Components/drawer.dart';
 import 'package:quickservice/Theme/theme_provider.dart';
 import 'package:quickservice/loginOrsignup/loginPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -36,7 +37,10 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(
+        textValue: 'Settings',
+      ),
+      drawer: drawer(),
       body: ListView(
         children: [
           _buildTile(

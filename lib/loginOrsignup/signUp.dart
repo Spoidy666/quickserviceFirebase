@@ -38,7 +38,7 @@ final class _SignupState extends State<Signup> {
                   style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.tertiary),
+                      color: Theme.of(context).colorScheme.primary),
                 ),
                 SizedBox(
                   height: 15,
@@ -156,7 +156,7 @@ final class _SignupState extends State<Signup> {
                         child: Text(
                           "Already a user? Login",
                           style: TextStyle(
-                              color: Theme.of(context).colorScheme.tertiary,
+                              color: Theme.of(context).colorScheme.primary,
                               fontSize: 15),
                         )),
                   ],

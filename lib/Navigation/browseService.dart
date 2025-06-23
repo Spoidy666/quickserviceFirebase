@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quickservice/Components/appBar.dart';
+import 'package:quickservice/Components/drawer.dart';
 import 'package:quickservice/Components/serviceCard.dart';
 
 class BrowseCategoryPage extends StatelessWidget {
@@ -12,7 +13,10 @@ class BrowseCategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(
+        textValue: 'Browse',
+      ),
+      drawer: drawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [

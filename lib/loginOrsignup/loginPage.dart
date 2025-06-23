@@ -37,7 +37,7 @@ class _LoginpageState extends State<Loginpage> {
                   style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.tertiary),
+                      color: Theme.of(context).colorScheme.primary),
                 ),
                 SizedBox(
                   height: 15,
@@ -112,7 +112,7 @@ class _LoginpageState extends State<Loginpage> {
                           child: Text(
                             "Forgot password?",
                             style: TextStyle(
-                                color: Theme.of(context).colorScheme.tertiary),
+                                color: Theme.of(context).colorScheme.primary),
                           )),
                     ],
                   ),
@@ -137,14 +137,13 @@ class _LoginpageState extends State<Loginpage> {
                   width: 220,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.surface,
+                        backgroundColor: Theme.of(context).colorScheme.tertiary,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              4), // Smaller value = more rectangular
+                          borderRadius: BorderRadius.circular(4),
                         ),
                         padding:
                             EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                        elevation: 4, // Optional: for shadow
+                        elevation: 4,
                       ),
                       onPressed: () => signInWithGoogle(),
                       child: Row(
@@ -156,7 +155,7 @@ class _LoginpageState extends State<Loginpage> {
                           Text(
                             '   Continue with Google',
                             style: TextStyle(
-                                color: Theme.of(context).colorScheme.tertiary),
+                                color: Theme.of(context).colorScheme.primary),
                           )
                         ],
                       )),
@@ -175,7 +174,7 @@ class _LoginpageState extends State<Loginpage> {
                         child: Text(
                           "Signup..",
                           style: TextStyle(
-                              color: Theme.of(context).colorScheme.tertiary,
+                              color: Theme.of(context).colorScheme.primary,
                               fontSize: 15),
                         )),
                   ],

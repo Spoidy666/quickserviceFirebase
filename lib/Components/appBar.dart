@@ -1,27 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:quickservice/Navigation/settings.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final VoidCallback? onProfileTap;
-
-  const CustomAppBar({super.key, this.onProfileTap});
+  final String textValue;
+  const CustomAppBar({super.key, required this.textValue});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       scrolledUnderElevation: 0,
       backgroundColor: Theme.of(context).colorScheme.surface,
-      leading: Builder(
-        builder: (context) => IconButton(
-          icon: Icon(Icons.menu, color: Theme.of(context).colorScheme.primary),
-          onPressed: () => Scaffold.of(context).openDrawer(),
-        ),
+      leading: IconButton(
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+          icon: Icon(Icons.menu_rounded)),
+      title: Text(
+        textValue,
+        style: TextStyle(fontSize: 21),
       ),
       actions: [
         IconButton(
-          onPressed: onProfileTap ?? () {},
-          icon: Icon(Icons.person_2,
-              color: Theme.of(context).colorScheme.primary),
-        ),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (ctxs) {
+                return SettingsPage();
+              }));
+            },
+            icon: Icon(
+              Icons.person_2,
+              color: Theme.of(context).colorScheme.primary,
+            ))
       ],
     );
   }

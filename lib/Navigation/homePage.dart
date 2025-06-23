@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quickservice/Components/appBar.dart';
+import 'package:quickservice/Components/drawer.dart';
 import 'package:quickservice/Components/serviceCard.dart';
-import 'package:quickservice/Navigation/settings.dart';
 import 'package:quickservice/auth/auth.dart';
 
 class Homepage extends StatelessWidget {
@@ -22,7 +22,8 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(textValue: '',),
+      drawer: drawer(),
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
