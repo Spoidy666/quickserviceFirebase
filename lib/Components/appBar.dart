@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:quickservice/Navigation/profilePage.dart';
 import 'package:quickservice/Navigation/settings.dart';
+import 'package:quickservice/auth/auth.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String textValue;
@@ -23,12 +27,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (ctxs) {
-                return SettingsPage();
+                return Profilepage();
               }));
             },
-            icon: Icon(
-              Icons.person_2,
-              color: Theme.of(context).colorScheme.primary,
+            icon: CircleAvatar(
+              backgroundImage:
+                  NetworkImage(getCurrentUser()!.photoURL.toString()),
             ))
       ],
     );

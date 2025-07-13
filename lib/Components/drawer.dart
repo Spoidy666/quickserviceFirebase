@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quickservice/Navigation/mainPage.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickservice/auth/auth.dart';
+import 'package:quickservice/bloc/mainPageCubit.dart';
 
 class drawer extends StatelessWidget {
   const drawer({super.key});
@@ -69,8 +70,8 @@ class drawer extends StatelessWidget {
                 style: TextStyle(color: Theme.of(context).colorScheme.primary),
               ),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (ctx) => Mainpage()));
+                Navigator.of(context).pop(); // Close the drawer
+                context.read<Mainpagecubit>().changePage(0); // Go to Home
               },
             ),
             ListTile(

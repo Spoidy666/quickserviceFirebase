@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quickservice/Components/appBar.dart';
 import 'package:quickservice/Components/drawer.dart';
+import 'package:quickservice/Components/location_picker.dart';
 import 'package:quickservice/Components/serviceCard.dart';
 import 'package:quickservice/auth/auth.dart';
 
@@ -19,10 +20,14 @@ class Homepage extends StatelessWidget {
     {'title': 'Maid', 'icon': Icons.person},
   ];
 
+  final ValueNotifier<String?> _locationText = ValueNotifier<String?>(null);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(textValue: '',),
+      appBar: CustomAppBar(
+        textValue: '',
+      ),
       drawer: drawer(),
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: SingleChildScrollView(
@@ -53,16 +58,45 @@ class Homepage extends StatelessWidget {
                           fontSize: 30,
                           color: Theme.of(context).colorScheme.primary),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(Icons.location_on,
-                            color: Theme.of(context).colorScheme.primary),
-                        SizedBox(width: 6),
-                        Text(
-                          'Userlocation.toString()',
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.primary),
+                        IconButton(
+                          onPressed: () async {
+                            final location = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const LocationPickerPage(),
+                              ),
+                            );
+
+                            if (location != null) {
+                              _locationText.value = location['address'];
+                            }
+                          },
+                          icon: const Icon(
+                            Icons.location_on,
+                            size: 30,
+                          ),
+                        ),
+                        const SizedBox(width: 6),
+                        Expanded(
+                          child: ValueListenableBuilder<String?>(
+                            valueListenable: _locationText,
+                            builder: (context, value, _) {
+                              return Text(
+                                value ?? "Select your \nlocation",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              );
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -71,8 +105,6 @@ class Homepage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 30),
-
-            // Title
             Text(
               "Service Category",
               style: TextStyle(
@@ -81,9 +113,7 @@ class Homepage extends StatelessWidget {
                 color: Theme.of(context).colorScheme.primary,
               ),
             ),
-
             SizedBox(height: 24),
-
             GridView.count(
               crossAxisCount: 3,
               shrinkWrap: true,

@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:quickservice/Components/appBar.dart';
 import 'package:quickservice/Components/drawer.dart';
 
-class Inbox extends StatelessWidget {
-  const Inbox({super.key});
+class Becomeaprovider extends StatelessWidget {
+  const Becomeaprovider({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(textValue: 'Inbox'),
+    return const Scaffold(
+      appBar: CustomAppBar(textValue: "Become a Provider"),
       drawer: drawer(),
-      body: Center(
-        child: Text("Nothing to show here"),
-      ),
+      body: Column(children: [],),
     );
   }
 }
