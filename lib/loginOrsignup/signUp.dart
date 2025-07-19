@@ -1,10 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:lottie/lottie.dart';
 import 'package:quickservice/Components/buttonOne.dart';
-import 'package:quickservice/Components/snackBar.dart';
+import 'package:quickservice/Components/textField.dart';
 import 'package:quickservice/auth/auth.dart';
 import 'package:quickservice/loginOrsignup/loginPage.dart';
 
@@ -54,20 +52,20 @@ final class _SignupState extends State<Signup> {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                child: TextFormField(
-                  controller: _signUpNameController,
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.person_2,
-                        color: Colors.black,
-                      ),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(100)),
-                      fillColor: Colors.white,
-                      filled: true,
-                      hintStyle: TextStyle(color: Colors.black),
-                      hintText: "Username"),
-                ),
+                child: Textfield(
+                    hinttext: 'Username',
+                    textController: _signUpNameController,
+                    textFieldIcon: Icons.person_2),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                child: Textfield(
+                    hinttext: 'Email',
+                    textController: _signUpEmailController,
+                    textFieldIcon: Icons.mail),
               ),
               SizedBox(
                 height: 10,
@@ -75,26 +73,7 @@ final class _SignupState extends State<Signup> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
                 child: TextFormField(
-                  controller: _signUpEmailController,
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.email,
-                        color: Colors.black,
-                      ),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(100)),
-                      fillColor: Colors.white,
-                      filled: true,
-                      hintStyle: TextStyle(color: Colors.black),
-                      hintText: "Email"),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                child: TextFormField(
+                    style: TextStyle(color: Colors.black),
                     obscureText: show_password,
                     controller: _signUpPasswordController,
                     decoration: InputDecoration(
@@ -114,7 +93,7 @@ final class _SignupState extends State<Signup> {
                         hintText: "Password",
                         hintStyle: TextStyle(color: Colors.black),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(100)))),
+                            borderRadius: BorderRadius.circular(17)))),
               ),
               SizedBox(
                 height: 10,
@@ -122,6 +101,7 @@ final class _SignupState extends State<Signup> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
                 child: TextFormField(
+                    style: TextStyle(color: Colors.black),
                     controller: _signUpConfirmPasswordController,
                     obscureText: show_confirm_password,
                     decoration: InputDecoration(
@@ -141,7 +121,7 @@ final class _SignupState extends State<Signup> {
                         hintText: "Confirm Password",
                         hintStyle: TextStyle(color: Colors.black),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(100)))),
+                            borderRadius: BorderRadius.circular(17)))),
               ),
               SizedBox(
                 height: 20,

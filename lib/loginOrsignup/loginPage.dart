@@ -19,7 +19,6 @@ class _LoginpageState extends State<Loginpage> {
   final formKey = GlobalKey<FormState>();
 
   @override
-  
   void dispose() {
     _loginEmail.dispose();
     _loginPassword.dispose();
@@ -55,13 +54,14 @@ class _LoginpageState extends State<Loginpage> {
                     return null;
                   },
                   controller: _loginEmail,
+                  style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                       prefixIcon: Icon(
                         Icons.email,
                         color: Colors.black,
                       ),
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(100)),
+                          borderRadius: BorderRadius.circular(17)),
                       fillColor: Colors.white,
                       filled: true,
                       hintStyle: TextStyle(color: Colors.black),
@@ -80,6 +80,7 @@ class _LoginpageState extends State<Loginpage> {
                       }
                       return null;
                     },
+                    style: TextStyle(color: Colors.black),
                     obscureText: showPassword,
                     controller: _loginPassword,
                     decoration: InputDecoration(
@@ -99,7 +100,7 @@ class _LoginpageState extends State<Loginpage> {
                         hintText: "Password",
                         hintStyle: TextStyle(color: Colors.black),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(100)))),
+                            borderRadius: BorderRadius.circular(17)))),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 30, 0),
@@ -190,8 +191,6 @@ class _LoginpageState extends State<Loginpage> {
     );
   }
 }
-
-
 
 String getFriendlyErrorLogin(String code) {
   switch (code) {

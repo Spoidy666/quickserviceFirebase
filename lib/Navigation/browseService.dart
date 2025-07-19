@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quickservice/Components/appBar.dart';
 import 'package:quickservice/Components/drawer.dart';
 import 'package:quickservice/Components/serviceCard.dart';
+import 'package:quickservice/Components/textField.dart';
 
 class BrowseCategoryPage extends StatelessWidget {
   BrowseCategoryPage({super.key});
@@ -24,20 +25,10 @@ class BrowseCategoryPage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: TextFormField(
-                controller: _searchController,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search, color: Colors.black),
-                  hintText: "Search",
-                  hintStyle: TextStyle(color: Colors.black),
-                  fillColor: Colors.white,
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                ),
-                style: TextStyle(color: Colors.black),
-              ),
+              child: Textfield(
+                  hinttext: 'Search',
+                  textController: _searchController,
+                  textFieldIcon: Icons.search),
             ),
             Padding(
               padding: sectionPadding,
@@ -63,7 +54,9 @@ class BrowseCategoryPage extends StatelessWidget {
                   ServiceCard(
                       icon: Icons.electrical_services, label: 'Electrical'),
                   ServiceCard(icon: Icons.build, label: 'Appliance Repair'),
-                  ServiceCard(icon: Icons.settings, label: 'Furniture Repair'),
+                  ServiceCard(
+                      icon: Icons.weekend_rounded, label: 'Furniture Repair'),
+                  ServiceCard(icon: Icons.settings, label: 'Mechanic'),
                 ],
               ),
             ),
@@ -95,7 +88,8 @@ class BrowseCategoryPage extends StatelessWidget {
                   ServiceCard(icon: FontAwesomeIcons.shirt, label: 'Laundary'),
                   ServiceCard(
                       icon: Icons.home_repair_service, label: 'Exterior Home'),
-                  ServiceCard(icon: Icons.weekend, label: 'Interior Home'),
+                  ServiceCard(
+                      icon: Icons.weekend_outlined, label: 'Interior Home'),
                 ],
               ),
             ),

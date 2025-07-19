@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quickservice/Provider/becomeAProvider.dart';
 import 'package:quickservice/auth/auth.dart';
 import 'package:quickservice/bloc/mainPageCubit.dart';
 
@@ -98,7 +99,11 @@ class drawer extends StatelessWidget {
               title: Text("Become a provider",
                   style:
                       TextStyle(color: Theme.of(context).colorScheme.primary)),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                  return Becomeaprovider();
+                }));
+              },
             ),
             Divider(),
           ],
