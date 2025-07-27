@@ -6,6 +6,7 @@ import 'package:quickservice/Navigation/mainPage.dart';
 import 'package:quickservice/loginOrsignup/loginPage.dart';
 import 'package:quickservice/loginOrsignup/signUp.dart';
 
+
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
 
@@ -91,3 +92,8 @@ signInWithGoogle() async {
   );
   return await FirebaseAuth.instance.signInWithCredential(credential);
 }
+
+
+//Provider authentication is in provider page
+
+

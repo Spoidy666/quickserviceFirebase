@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:quickservice/Components/appBar.dart';
+import 'package:quickservice/Components/buttonOne.dart';
 import 'package:quickservice/Components/drawer.dart';
 import 'package:quickservice/Components/serviceCategory.dart';
+import 'package:quickservice/Components/snackBar.dart';
 import 'package:quickservice/Components/textField.dart';
 import 'package:quickservice/auth/auth.dart';
 
@@ -37,7 +40,8 @@ class _BecomeaproviderState extends State<Becomeaprovider> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Text("Become a Partner"),
+              Text("Become a Partner",
+                  style: Theme.of(context).textTheme.headlineSmall),
               SizedBox(
                 height: 30,
               ),
@@ -133,9 +137,69 @@ class _BecomeaproviderState extends State<Becomeaprovider> {
                   ),
                   style: TextStyle(color: Colors.black),
                 ),
-              )
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Buttonone(text: "Submit", onTap: handleSubmitProviderSignup),
+              SizedBox(
+                height: 10,
+              ),
             ],
           ),
         ));
+  }
+
+  Future<void> handleSubmitProviderSignup() async {
+    final user = getCurrentUser();
+    if (user == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("User not logged in")),
+      );
+      return;
+    }
+
+    if (providerNameController.text.isEmpty ||
+        providerPhoneNumberController.text.isEmpty ||
+        selectedCategory == null ||
+        experienceController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Please fill all required fields")),
+      );
+      return;
+    }
+
+    final providerData = {
+      'fullName': providerNameController.text.trim(),
+      'email': providerEmailController.text.trim(),
+      'phone': providerPhoneNumberController.text.trim(),
+      'category': selectedCategory!.label,
+      'experience': experienceController.text.trim(),
+      'bio': bioController.text.trim(),
+      'status': 'pending',
+      'createdAt': FieldValue.serverTimestamp(),
+      'userId': user.uid,
+      'profileImageUrl': user.photoURL,
+    };
+
+    try {
+      await FirebaseFirestore.instance
+          .collection('providers')
+          .doc(user.uid)
+          .set(providerData);
+
+      await FirebaseFirestore.instance
+          .collection('categories')
+          .doc(selectedCategory!.label.toLowerCase())
+          .collection('providers')
+          .doc(user.uid)
+          .set(
+              {'ref': FirebaseFirestore.instance.doc('providers/${user.uid}')});
+
+      snack(context, "Application submitted for verification.");
+      Navigator.pop(context);
+    } catch (e) {
+      snack(context, "Submission failed: $e");
+    }
   }
 }

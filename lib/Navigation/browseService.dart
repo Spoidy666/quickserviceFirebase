@@ -50,9 +50,9 @@ class BrowseCategoryPage extends StatelessWidget {
                 mainAxisSpacing: 12,
                 childAspectRatio: 0.9,
                 children: const [
-                  ServiceCard(icon: Icons.plumbing, label: 'Plumbing'),
+                  ServiceCard(icon: Icons.plumbing, label: 'Plumber'),
                   ServiceCard(
-                      icon: Icons.electrical_services, label: 'Electrical'),
+                      icon: Icons.electrical_services, label: 'Electrician'),
                   ServiceCard(icon: Icons.build, label: 'Appliance Repair'),
                   ServiceCard(
                       icon: Icons.weekend_rounded, label: 'Furniture Repair'),
